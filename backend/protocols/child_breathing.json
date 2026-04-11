@@ -1,0 +1,67 @@
+{
+  "protocolId": "child_breathing",
+  "patientType": "CHILD",
+  "chiefComplaint": "breathing",
+  "title": "Child with Cough or Fast Breathing",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Is there chest indrawing?",
+      "hindi": "क्या छाती अंदर धंस रही है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_RED", "NO": "q2" }
+    },
+    {
+      "id": "q2",
+      "text": "Count breaths for 1 minute: is breathing fast for age?",
+      "hindi": "1 मिनट में सांस गिनें: क्या उम्र के अनुसार तेज सांस है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "q3" }
+    },
+    {
+      "id": "q3",
+      "text": "Is there stridor while calm?",
+      "hindi": "क्या शांत अवस्था में स्ट्राइडर की आवाज है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_RED", "NO": "RESULT_GREEN" }
+    }
+  ],
+  "results": {
+    "RESULT_RED": {
+      "classification": "RED",
+      "title": "Severe pneumonia or very severe disease",
+      "hindi": "गंभीर निमोनिया या अत्यंत गंभीर बीमारी",
+      "reason": "Chest indrawing/stridor",
+      "advice": [
+        "Keep child warm and calm",
+        "Refer urgently",
+        "Do not delay transportation"
+      ],
+      "medicines": []
+    },
+    "RESULT_YELLOW": {
+      "classification": "YELLOW",
+      "title": "Pneumonia",
+      "hindi": "निमोनिया",
+      "reason": "Fast breathing",
+      "advice": [
+        "Start first dose antibiotic as per state protocol",
+        "Follow up next day",
+        "Refer within 24 hours if worsening"
+      ],
+      "medicines": ["Amoxicillin as per weight"]
+    },
+    "RESULT_GREEN": {
+      "classification": "GREEN",
+      "title": "No pneumonia: cough/cold",
+      "hindi": "निमोनिया नहीं: खांसी/जुकाम",
+      "reason": "No fast breathing or danger signs",
+      "advice": [
+        "Home care and fluids",
+        "Continue feeding",
+        "Return if breathing worsens"
+      ],
+      "medicines": ["Supportive care only"]
+    }
+  }
+}

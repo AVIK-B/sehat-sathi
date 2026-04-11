@@ -1,0 +1,40 @@
+{
+  "signs": [
+    {
+      "id": "ds_unconscious",
+      "text": "Is the patient unconscious or very difficult to wake?",
+      "hindi": "क्या मरीज बेहोश है या जगाना बहुत मुश्किल है?",
+      "icon": "ic_unconscious"
+    },
+    {
+      "id": "ds_breathing",
+      "text": "Is the patient having severe trouble breathing (gasping, chest in-drawing, blue lips)?",
+      "hindi": "क्या मरीज को सांस लेने में बहुत तकलीफ है (हांफना, छाती धंसना, होंठ नीले)?",
+      "icon": "ic_breathing"
+    },
+    {
+      "id": "ds_bleeding",
+      "text": "Is there severe bleeding that does not stop?",
+      "hindi": "क्या बहुत अधिक खून बह रहा है जो रुक नहीं रहा?",
+      "icon": "ic_bleeding"
+    },
+    {
+      "id": "ds_unable_drink",
+      "text": "For infant/child: unable to drink or breastfeed?",
+      "hindi": "शिशु/बच्चे के लिए: क्या बच्चा पी या स्तनपान नहीं कर पा रहा है?",
+      "icon": "ic_drink"
+    },
+    {
+      "id": "ds_convulsion",
+      "text": "Is the patient having convulsions/fits now or in this illness episode?",
+      "hindi": "क्या मरीज को दौरे/फिट आ रहे हैं या इस बीमारी में आए थे?",
+      "icon": "ic_convulsion"
+    },
+    {
+      "id": "ds_hypothermia",
+      "text": "Is the body very cold to touch (possible hypothermia)?",
+      "hindi": "क्या शरीर छूने पर बहुत ठंडा लग रहा है (संभावित हाइपोथर्मिया)?",
+      "icon": "ic_cold"
+    }
+  ]
+}

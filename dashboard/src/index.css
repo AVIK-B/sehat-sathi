@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: "Noto Sans", "Mukta", sans-serif;
+}
+
+.card {
+  @apply rounded-2xl bg-white p-4 shadow-card;
+}
+
+.metric-value {
+  @apply text-3xl font-black;
+}
+
+.red-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #d32f2f;
+  border: 2px solid white;
+  box-shadow: 0 0 0 6px rgba(211, 47, 47, 0.25);
+  animation: pulseRed 1.2s ease-in-out infinite;
+}

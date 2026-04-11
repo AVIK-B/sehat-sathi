@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ashaworker.triage.ui.home.HomeFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/action_home_to_danger"
+            app:destination="@id/dangerSignsFragment" />
+        <action
+            android:id="@+id/action_home_to_history"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_home_to_sync"
+            app:destination="@id/syncFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dangerSignsFragment"
+        android:name="com.ashaworker.triage.ui.danger.DangerSignsFragment"
+        android:label="Danger Signs">
+        <argument
+            android:name="patientType"
+            app:argType="string" />
+        <argument
+            android:name="chiefComplaint"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_danger_to_triage"
+            app:destination="@id/triageFragment" />
+        <action
+            android:id="@+id/action_danger_to_result"
+            app:destination="@id/resultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/triageFragment"
+        android:name="com.ashaworker.triage.ui.triage.TriageFragment"
+        android:label="Triage">
+        <argument
+            android:name="patientType"
+            app:argType="string" />
+        <argument
+            android:name="chiefComplaint"
+            app:argType="string" />
+        <argument
+            android:name="questionId"
+            app:argType="string"
+            android:defaultValue="" />
+        <action
+            android:id="@+id/action_triage_to_result"
+            app:destination="@id/resultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.ashaworker.triage.ui.result.ResultFragment"
+        android:label="Result">
+        <argument
+            android:name="patientType"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_result_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.ashaworker.triage.ui.history.HistoryFragment"
+        android:label="History" />
+
+    <fragment
+        android:id="@+id/syncFragment"
+        android:name="com.ashaworker.triage.ui.sync.SyncFragment"
+        android:label="Sync" />
+
+</navigation>

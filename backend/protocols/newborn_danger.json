@@ -1,0 +1,74 @@
+{
+  "protocolId": "newborn_danger",
+  "patientType": "NEWBORN",
+  "chiefComplaint": "newborn",
+  "title": "Newborn Danger Assessment",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Is the newborn feeding poorly or not feeding at all?",
+      "hindi": "क्या नवजात ठीक से दूध नहीं पी रहा है या बिल्कुल नहीं पी रहा?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_RED", "NO": "q2" }
+    },
+    {
+      "id": "q2",
+      "text": "Is axillary temperature below 36.5C or above 37.5C?",
+      "hindi": "क्या बगल का तापमान 36.5C से कम या 37.5C से अधिक है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "q3" }
+    },
+    {
+      "id": "q3",
+      "text": "Is there yellowing of palms/soles (severe jaundice)?",
+      "hindi": "क्या हथेलियों/तलवों में पीलापन है (गंभीर पीलिया)?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_RED", "NO": "q4" }
+    },
+    {
+      "id": "q4",
+      "text": "Is there redness or pus around umbilicus/skin infection?",
+      "hindi": "क्या नाभि के पास लालिमा/पीप या त्वचा संक्रमण है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "RESULT_GREEN" }
+    }
+  ],
+  "results": {
+    "RESULT_RED": {
+      "classification": "RED",
+      "title": "Urgent newborn referral",
+      "hindi": "नवजात को तुरंत रेफर करें",
+      "reason": "Severe danger signs",
+      "advice": [
+        "Keep skin-to-skin and warm",
+        "Refer immediately to SNCU/NBSU linked facility",
+        "Ensure fast transportation"
+      ],
+      "medicines": []
+    },
+    "RESULT_YELLOW": {
+      "classification": "YELLOW",
+      "title": "Needs facility review in 24h",
+      "hindi": "24 घंटे में सुविधा पर जांच आवश्यक",
+      "reason": "Moderate risk signs",
+      "advice": [
+        "Maintain warmth",
+        "Continue exclusive breastfeeding",
+        "Visit facility within 24 hours"
+      ],
+      "medicines": ["As per physician advice"]
+    },
+    "RESULT_GREEN": {
+      "classification": "GREEN",
+      "title": "Routine newborn home care",
+      "hindi": "नियमित नवजात घरेलू देखभाल",
+      "reason": "No danger signs",
+      "advice": [
+        "Exclusive breastfeeding",
+        "Thermal care",
+        "Cord care and hand hygiene"
+      ],
+      "medicines": []
+    }
+  }
+}

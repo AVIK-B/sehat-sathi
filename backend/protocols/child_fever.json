@@ -1,0 +1,100 @@
+{
+  "protocolId": "child_fever",
+  "patientType": "CHILD",
+  "chiefComplaint": "fever",
+  "title": "Child with Fever",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "How many days has the child had fever?",
+      "hindi": "बच्चे को कितने दिन से बुखार है?",
+      "type": "CHOICE",
+      "choices": ["Less than 3 days", "3 to 7 days", "More than 7 days"],
+      "next": {
+        "Less than 3 days": "q2",
+        "3 to 7 days": "q2",
+        "More than 7 days": "RESULT_YELLOW"
+      }
+    },
+    {
+      "id": "q2",
+      "text": "Is the child breathing fast? (count for one minute)",
+      "hindi": "क्या बच्चा तेज सांस ले रहा है? (एक मिनट गिनें)",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_RED", "NO": "q3" }
+    },
+    {
+      "id": "q3",
+      "text": "Can the child drink or breastfeed normally?",
+      "hindi": "क्या बच्चा सामान्य रूप से पी या स्तनपान कर सकता है?",
+      "type": "YES_NO",
+      "next": { "YES": "q4", "NO": "RESULT_RED" }
+    },
+    {
+      "id": "q4",
+      "text": "Is there a stiff neck?",
+      "hindi": "क्या गर्दन अकड़ी हुई है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_RED", "NO": "q5" }
+    },
+    {
+      "id": "q5",
+      "text": "Does the child have a generalized rash?",
+      "hindi": "क्या बच्चे के पूरे शरीर पर दाने हैं?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "q6" }
+    },
+    {
+      "id": "q6",
+      "text": "Does fever not reduce after paracetamol and tepid sponging?",
+      "hindi": "क्या पैरासिटामोल और पोंछाई के बाद भी बुखार कम नहीं हुआ?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "q7" }
+    },
+    {
+      "id": "q7",
+      "text": "Is child active and feeding well?",
+      "hindi": "क्या बच्चा सक्रिय है और ठीक से खा/पी रहा है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_GREEN", "NO": "RESULT_YELLOW" }
+    }
+  ],
+  "results": {
+    "RESULT_RED": {
+      "classification": "RED",
+      "title": "Refer to hospital immediately",
+      "hindi": "तुरंत अस्पताल भेजें",
+      "reason": "Child has signs of severe illness",
+      "advice": [
+        "Do not delay referral",
+        "Keep child warm during travel",
+        "Go to nearest PHC/CHC immediately"
+      ],
+      "medicines": []
+    },
+    "RESULT_YELLOW": {
+      "classification": "YELLOW",
+      "title": "Refer within 24 hours",
+      "hindi": "24 घंटे के अंदर रेफर करें",
+      "reason": "Moderate risk signs present",
+      "advice": [
+        "Give paracetamol as per weight",
+        "Encourage oral fluids",
+        "Visit PHC today or tomorrow"
+      ],
+      "medicines": ["Paracetamol syrup - dose by weight"]
+    },
+    "RESULT_GREEN": {
+      "classification": "GREEN",
+      "title": "Home care",
+      "hindi": "घर पर देखभाल",
+      "reason": "No severe signs identified",
+      "advice": [
+        "Give extra fluids",
+        "Paracetamol only if fever above 38.5C",
+        "Return if worse or not better in 2 days"
+      ],
+      "medicines": ["Paracetamol syrup - dose by weight"]
+    }
+  }
+}

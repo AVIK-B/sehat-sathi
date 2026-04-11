@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ASHA Sahayak</string>
+    <string name="who_are_you_seeing_today">Who are you seeing today?</string>
+    <string name="newborn">Newborn (0-28 days)</string>
+    <string name="child">Child (1 month-5 years)</string>
+    <string name="pregnant_woman">Pregnant Woman</string>
+    <string name="adult">Adult</string>
+    <string name="visit_history">Visit History</string>
+    <string name="sync">Sync</string>
+    <string name="check_danger_signs_first">Check for danger signs FIRST</string>
+    <string name="danger_sign_present">DANGER SIGN PRESENT - Refer Now</string>
+    <string name="no_danger_continue">No danger signs - Continue assessment</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="back">Back</string>
+    <string name="save_visit_record">Save Visit Record</string>
+    <string name="what_to_do">What to do</string>
+    <string name="medicines">Medicines</string>
+    <string name="where_to_go">Where to go</string>
+    <string name="unsynced">Unsynced</string>
+    <string name="sync_now">Sync Now</string>
+    <string name="login">Login</string>
+    <string name="worker_id">Worker ID</string>
+    <string name="pin">4-digit PIN</string>
+    <string name="worker_details">Assigned Area</string>
+    <string name="search_visits">Search by date/result</string>
+    <string name="result_red">REFER IMMEDIATELY</string>
+    <string name="result_yellow">REFER TODAY</string>
+    <string name="result_green">HOME CARE</string>
+    <string name="gps_saved">GPS captured</string>
+    <string name="share_sms">Share by SMS</string>
+    <string name="chief_complaint_prompt">Select complaint</string>
+    <string name="status_synced">Synced</string>
+</resources>

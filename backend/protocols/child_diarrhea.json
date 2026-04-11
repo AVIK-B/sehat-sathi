@@ -1,0 +1,74 @@
+{
+  "protocolId": "child_diarrhea",
+  "patientType": "CHILD",
+  "chiefComplaint": "diarrhea",
+  "title": "Child with Diarrhea",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Is there blood in stool?",
+      "hindi": "क्या मल में खून है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "q2" }
+    },
+    {
+      "id": "q2",
+      "text": "Is the child lethargic or very restless?",
+      "hindi": "क्या बच्चा सुस्त या बहुत बेचैन है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_RED", "NO": "q3" }
+    },
+    {
+      "id": "q3",
+      "text": "Does skin pinch go back very slowly (more than 2 sec)?",
+      "hindi": "क्या त्वचा की चुटकी बहुत धीरे (2 सेकंड से ज्यादा) सामान्य होती है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "q4" }
+    },
+    {
+      "id": "q4",
+      "text": "Is child drinking poorly?",
+      "hindi": "क्या बच्चा कम पी रहा है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "RESULT_GREEN" }
+    }
+  ],
+  "results": {
+    "RESULT_RED": {
+      "classification": "RED",
+      "title": "Severe dehydration - refer now",
+      "hindi": "गंभीर निर्जलीकरण - तुरंत रेफर करें",
+      "reason": "Signs of severe dehydration",
+      "advice": [
+        "Start ORS while referring",
+        "Continue breastfeeding",
+        "Refer immediately to PHC/CHC"
+      ],
+      "medicines": ["ORS packet"]
+    },
+    "RESULT_YELLOW": {
+      "classification": "YELLOW",
+      "title": "Some dehydration",
+      "hindi": "कुछ निर्जलीकरण",
+      "reason": "Moderate dehydration signs",
+      "advice": [
+        "Give ORS after each loose stool",
+        "Give zinc for 14 days",
+        "Visit PHC within 24 hours"
+      ],
+      "medicines": ["ORS", "Zinc dispersible tablet"]
+    },
+    "RESULT_GREEN": {
+      "classification": "GREEN",
+      "title": "No dehydration",
+      "hindi": "निर्जलीकरण नहीं",
+      "reason": "Mild diarrhea",
+      "advice": [
+        "Continue feeding and breastfeeding",
+        "Give ORS at home",
+        "Return if blood in stool, persistent vomiting, or fever"
+      ],
+      "medicines": ["ORS", "Zinc dispersible tablet"]
+    }
+  }
+}

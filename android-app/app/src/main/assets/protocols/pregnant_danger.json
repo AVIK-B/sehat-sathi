@@ -1,0 +1,74 @@
+{
+  "protocolId": "pregnant_danger",
+  "patientType": "PREGNANT",
+  "chiefComplaint": "pregnancy",
+  "title": "Pregnancy Danger Signs",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Is there vaginal bleeding?",
+      "hindi": "क्या योनि से खून आ रहा है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_RED", "NO": "q2" }
+    },
+    {
+      "id": "q2",
+      "text": "Any convulsions/fits or loss of consciousness?",
+      "hindi": "क्या दौरे/बेहोशी हुई है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_RED", "NO": "q3" }
+    },
+    {
+      "id": "q3",
+      "text": "Severe headache with blurred vision or swelling of face/hands?",
+      "hindi": "क्या तेज सिरदर्द, धुंधला दिखना, या चेहरे/हाथों में सूजन है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "q4" }
+    },
+    {
+      "id": "q4",
+      "text": "Is labor pain prolonged or waters broken with fever?",
+      "hindi": "क्या प्रसव पीड़ा लंबी है या पानी निकलने के बाद बुखार है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_RED", "NO": "RESULT_GREEN" }
+    }
+  ],
+  "results": {
+    "RESULT_RED": {
+      "classification": "RED",
+      "title": "Emergency obstetric referral",
+      "hindi": "आपातकालीन प्रसूति रेफरल",
+      "reason": "High-risk maternal danger sign",
+      "advice": [
+        "Arrange immediate referral",
+        "Do not give oral intake if surgery possible",
+        "Shift to FRU/CHC with transport"
+      ],
+      "medicines": []
+    },
+    "RESULT_YELLOW": {
+      "classification": "YELLOW",
+      "title": "Urgent review within 24 hours",
+      "hindi": "24 घंटे में त्वरित जांच",
+      "reason": "Possible pre-eclampsia or maternal risk",
+      "advice": [
+        "Rest and avoid heavy work",
+        "Check BP at nearest facility",
+        "Visit PHC within 24 hours"
+      ],
+      "medicines": ["As prescribed by medical officer"]
+    },
+    "RESULT_GREEN": {
+      "classification": "GREEN",
+      "title": "Continue ANC and home monitoring",
+      "hindi": "ANC जारी रखें और घर पर निगरानी करें",
+      "reason": "No immediate danger signs",
+      "advice": [
+        "Continue routine ANC visits",
+        "Take IFA and calcium",
+        "Return immediately if any danger sign appears"
+      ],
+      "medicines": ["IFA tablets", "Calcium tablets"]
+    }
+  }
+}

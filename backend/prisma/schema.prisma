@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum WorkerRole {
+  WORKER
+  SUPERVISOR
+}
+
+model Worker {
+  id            String         @id
+  name          String
+  block         String
+  district      String
+  pinHash       String         @map("pin_hash")
+  role          WorkerRole
+  visits        Visit[]
+  earnings      WorkerEarning[]
+  createdAt     DateTime       @default(now())
+
+  @@map("workers")
+}
+
+model Visit {
+  id               String             @id
+  workerId         String             @map("worker_id")
+  worker           Worker             @relation(fields: [workerId], references: [id])
+  patientType      String             @map("patient_type")
+  patientAgeMonths Int?               @map("patient_age_months")
+  chiefComplaint   String             @map("chief_complaint")
+  triageResult     String             @map("triage_result")
+  adviceGiven      Json               @map("advice_given")
+  referralRequired Boolean            @map("referral_required")
+  referralUrgency  String             @map("referral_urgency")
+  latitude         Float?
+  longitude        Float?
+  visitTimestamp   DateTime           @map("visit_timestamp")
+  synced           Boolean            @default(true)
+  syncAttempts     Int                @default(0) @map("sync_attempts")
+  serverReceivedAt DateTime           @default(now()) @map("server_received_at")
+  questionResponses QuestionResponse[]
+  earning          WorkerEarning?
+
+  @@index([workerId])
+  @@index([visitTimestamp])
+  @@map("visits")
+}
+
+model QuestionResponse {
+  id           String   @id @default(uuid())
+  visitId       String   @map("visit_id")
+  visit         Visit    @relation(fields: [visitId], references: [id], onDelete: Cascade)
+  questionId    String   @map("question_id")
+  questionText  String   @map("question_text")
+  response      String
+
+  @@index([visitId])
+  @@map("question_responses")
+}
+
+model IncentiveRule {
+  id         String   @id @default(uuid())
+  actionType String   @unique @map("action_type")
+  amountInr  Int      @map("amount_inr")
+  createdAt  DateTime @default(now())
+
+  @@map("incentive_rules")
+}
+
+model WorkerEarning {
+  id            String   @id @default(uuid())
+  workerId       String   @map("worker_id")
+  worker         Worker   @relation(fields: [workerId], references: [id])
+  visitId        String?  @unique @map("visit_id")
+  visit          Visit?   @relation(fields: [visitId], references: [id])
+  actionType     String   @map("action_type")
+  amountInr      Int      @map("amount_inr")
+  calculatedAt   DateTime @default(now()) @map("calculated_at")
+
+  @@index([workerId])
+  @@map("worker_earnings")
+}

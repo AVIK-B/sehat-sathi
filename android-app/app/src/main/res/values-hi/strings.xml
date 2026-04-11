@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">आशा सहायक</string>
+    <string name="who_are_you_seeing_today">आज आप किस मरीज को देख रही हैं?</string>
+    <string name="newborn">नवजात (0-28 दिन)</string>
+    <string name="child">बच्चा (1 माह-5 वर्ष)</string>
+    <string name="pregnant_woman">गर्भवती महिला</string>
+    <string name="adult">वयस्क</string>
+    <string name="visit_history">विजिट इतिहास</string>
+    <string name="sync">सिंक</string>
+    <string name="check_danger_signs_first">पहले खतरे के संकेत जांचें</string>
+    <string name="danger_sign_present">खतरे का संकेत मौजूद है - तुरंत रेफर करें</string>
+    <string name="no_danger_continue">कोई खतरे का संकेत नहीं - जांच जारी रखें</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="back">वापस</string>
+    <string name="save_visit_record">विजिट रिकॉर्ड सेव करें</string>
+    <string name="what_to_do">क्या करें</string>
+    <string name="medicines">दवाइयाँ</string>
+    <string name="where_to_go">कहाँ जाएँ</string>
+    <string name="unsynced">अभी सिंक नहीं हुआ</string>
+    <string name="sync_now">अभी सिंक करें</string>
+    <string name="login">लॉगिन</string>
+    <string name="worker_id">वर्कर आईडी</string>
+    <string name="pin">4 अंकों का पिन</string>
+    <string name="worker_details">नियुक्त क्षेत्र</string>
+    <string name="search_visits">तारीख/रिजल्ट से खोजें</string>
+    <string name="result_red">तुरंत रेफर करें</string>
+    <string name="result_yellow">आज रेफर करें</string>
+    <string name="result_green">घर पर देखभाल</string>
+    <string name="gps_saved">GPS दर्ज हुआ</string>
+    <string name="share_sms">SMS से साझा करें</string>
+    <string name="chief_complaint_prompt">मुख्य शिकायत चुनें</string>
+    <string name="status_synced">सिंक हुआ</string>
+</resources>

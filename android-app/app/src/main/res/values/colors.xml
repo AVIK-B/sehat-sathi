@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="teal_primary">#00897B</color>
+    <color name="red_emergency">#D32F2F</color>
+    <color name="yellow_referral">#F9A825</color>
+    <color name="green_home">#388E3C</color>
+    <color name="blue_action">#1976D2</color>
+    <color name="gray_subtitle">#616161</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#1E1E1E</color>
+</resources>

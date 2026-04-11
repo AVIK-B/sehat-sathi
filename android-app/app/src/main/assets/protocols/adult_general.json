@@ -1,0 +1,48 @@
+{
+  "protocolId": "adult_general",
+  "patientType": "ADULT",
+  "chiefComplaint": "fever",
+  "title": "Adult Basic Assessment",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Fever for more than 5 days?",
+      "hindi": "क्या 5 दिनों से अधिक बुखार है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "q2" }
+    },
+    {
+      "id": "q2",
+      "text": "Severe weakness, dizziness, or persistent vomiting?",
+      "hindi": "क्या बहुत कमजोरी, चक्कर, या लगातार उल्टी है?",
+      "type": "YES_NO",
+      "next": { "YES": "RESULT_YELLOW", "NO": "RESULT_GREEN" }
+    }
+  ],
+  "results": {
+    "RESULT_RED": {
+      "classification": "RED",
+      "title": "Emergency referral",
+      "hindi": "आपातकालीन रेफरल",
+      "reason": "Severe condition",
+      "advice": ["Refer immediately to nearest facility"],
+      "medicines": []
+    },
+    "RESULT_YELLOW": {
+      "classification": "YELLOW",
+      "title": "Facility review within 24 hours",
+      "hindi": "24 घंटे में सुविधा पर जांच",
+      "reason": "Moderate risk",
+      "advice": ["Visit PHC within 24 hours", "Hydrate well"],
+      "medicines": ["Paracetamol as advised"]
+    },
+    "RESULT_GREEN": {
+      "classification": "GREEN",
+      "title": "Home care",
+      "hindi": "घर पर देखभाल",
+      "reason": "Mild symptoms",
+      "advice": ["Rest and hydration", "Return if symptoms worsen"],
+      "medicines": ["Paracetamol if needed"]
+    }
+  }
+}
