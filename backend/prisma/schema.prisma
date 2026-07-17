@@ -1,35 +1,80 @@
-datasource db {
-  provider = "postgresql"
-  url      = env("postgresql://postgres:Avik!576519@db.wfyxztnkmsuwxhwuapbk.supabase.co:5432/postgres")
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
-// Your existing models go below this line
-model Visit {
-  id               String             @id
-  workerId         String             @map("worker_id")
-  worker           Worker             @relation(fields: [workerId], references: [id])
-  patientType      String             @map("patient_type")
-  patientAgeMonths Int?               @map("patient_age_months")
-  chiefComplaint   String             @map("chief_complaint")
-  triageResult     String             @map("triage_result")
-  adviceGiven      Json               @map("advice_given")
-  referralRequired Boolean            @map("referral_required")
-  referralUrgency  String             @map("referral_urgency")
-  latitude         Float?
-  longitude        Float?
-  visitTimestamp   DateTime           @map("visit_timestamp")
-  synced           Boolean            @default(true)
-  syncAttempts     Int                @default(0) @map("sync_attempts")
-  serverReceivedAt DateTime           @map("server_received_at")
-  questionResponses QuestionResponse[]
-  earning          WorkerEarning?
-  protocolHash     String             @map("protocol_hash")
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
 
-  @@index([workerId])
-  @@index([visitTimestamp])
-  @@map("visits")
+model incentive_rules {
+  id          String   @id
+  action_type String   @unique
+  amount_inr  Int
+  createdAt   DateTime @default(now())
+}
+
+model question_responses {
+  id            String @id
+  visit_id      String
+  question_id   String
+  question_text String
+  response      String
+  visits        visits @relation(fields: [visit_id], references: [id], onDelete: Cascade)
+
+  @@index([visit_id])
+}
+
+model visits {
+  id                 String               @id
+  worker_id          String
+  patient_type       String
+  patient_age_months Int?
+  chief_complaint    String
+  triage_result      String
+  advice_given       Json
+  referral_required  Boolean
+  referral_urgency   String
+  latitude           Float?
+  longitude          Float?
+  visit_timestamp    DateTime
+  synced             Boolean              @default(true)
+  sync_attempts      Int                  @default(0)
+  server_received_at DateTime             @default(now())
+  question_responses question_responses[]
+  workers            workers              @relation(fields: [worker_id], references: [id])
+  worker_earnings    worker_earnings?
+
+  @@index([visit_timestamp])
+  @@index([worker_id])
+}
+
+model worker_earnings {
+  id            String   @id
+  worker_id     String
+  visit_id      String?  @unique
+  action_type   String
+  amount_inr    Int
+  calculated_at DateTime @default(now())
+  visits        visits?  @relation(fields: [visit_id], references: [id])
+  workers       workers  @relation(fields: [worker_id], references: [id])
+
+  @@index([worker_id])
+}
+
+model workers {
+  id              String            @id
+  name            String
+  block           String
+  district        String
+  pin_hash        String
+  role            WorkerRole
+  createdAt       DateTime          @default(now())
+  visits          visits[]
+  worker_earnings worker_earnings[]
+}
+
+enum WorkerRole {
+  WORKER
+  SUPERVISOR
 }
