@@ -11,5 +11,6 @@ RUN npx prisma generate
 COPY src ./src
 COPY protocols ./protocols
 
-EXPOSE 8080
+EXPOSE 8082
+ENV PORT=8082
 CMD ["npm", "run", "start"]
