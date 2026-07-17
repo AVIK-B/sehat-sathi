@@ -1,3 +1,13 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("postgresql://postgres:Avik!576519@db.wfyxztnkmsuwxhwuapbk.supabase.co:5432/postgres")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Your existing models go below this line
 model Visit {
   id               String             @id
   workerId         String             @map("worker_id")
@@ -17,7 +27,7 @@ model Visit {
   serverReceivedAt DateTime           @map("server_received_at")
   questionResponses QuestionResponse[]
   earning          WorkerEarning?
-  protocolHash     String             @map("protocol_hash") // Added for audit trail
+  protocolHash     String             @map("protocol_hash")
 
   @@index([workerId])
   @@index([visitTimestamp])
