@@ -11,18 +11,32 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
-// 1. Configure Helmet to allow cross-origin resource sharing
-app.use(helmet({
-  crossOriginResourcePolicy: { policy: "cross-origin" }
-}));
+// 1. Helmet (keep it, but don't let it block CORS preflights)
+app.use(helmet());
 
-// 2. Configure CORS to explicitly allow your frontend domain and credentials
+// 2. Explicit CORS whitelist — REQUIRED when credentials: true
+const allowedOrigins = [
+  "https://sehat-sathi112.onrender.com",   // your deployed frontend
+  "http://localhost:5173",                  // Vite dev server (adjust if different)
+  "http://localhost:3000",                  // React dev server (adjust if different)
+];
+
 app.use(cors({
-  origin: true, 
+  origin: function (origin, callback) {
+    // allow requests with no origin (e.g. mobile apps, Postman, curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error("Not allowed by CORS"));
+  },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
+// Handle preflight explicitly for all routes (safety net for Render/Proxies)
+app.options("*", cors());
 
 app.use(express.json({ limit: "2mb" }));
 app.use(morgan("dev"));
