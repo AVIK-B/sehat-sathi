@@ -18,7 +18,7 @@ app.use(helmet({
 
 // 2. Configure CORS to explicitly allow your frontend domain and credentials
 app.use(cors({
-  origin: "https://sehat-sathi112.onrender.com/", 
+  origin: "https://sehat-sathi112.onrender.com", 
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
