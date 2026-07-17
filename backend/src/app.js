@@ -44,7 +44,14 @@ app.use(morgan("dev"));
 app.get("/health", (_req, res) => {
   res.json({ ok: true, service: "asha-backend" });
 });
-
+app.get("/health-db", async (_req, res) => {
+  try {
+    const count = await prisma.worker.count();
+    res.json({ ok: true, workers: count });
+  } catch (error) {
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/visits", visitRoutes);
 app.use("/api/v1/workers", workerRoutes);
