@@ -11,8 +11,19 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
-app.use(helmet());
-app.use(cors());
+// 1. Configure Helmet to allow cross-origin resource sharing
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
+
+// 2. Configure CORS to explicitly allow your frontend domain and credentials
+app.use(cors({
+  origin: "https://sehat-sathi112.onrender.com/", 
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.use(express.json({ limit: "2mb" }));
 app.use(morgan("dev"));
 
