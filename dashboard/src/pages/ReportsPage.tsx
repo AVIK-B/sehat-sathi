@@ -4,12 +4,15 @@ import { api } from "../api/client";
 import type { Visit } from "../types/api";
 
 function toCsv(visits: Visit[]): string {
-  const header = ["worker_name", "date", "patient_type", "result", "latitude", "longitude"];
+  const header = ["worker_name", "date", "patient_type", "chief_complaint", "result", "referral_required", "referral_urgency", "latitude", "longitude"];
   const rows = visits.map((v) => [
     v.worker?.name || v.workerId,
     new Date(v.visitTimestamp).toISOString(),
     v.patientType,
+    v.chiefComplaint,
     v.triageResult,
+    String(v.referralRequired),
+    v.referralUrgency,
     String(v.latitude ?? ""),
     String(v.longitude ?? "")
   ]);
@@ -64,7 +67,10 @@ export function ReportsPage() {
                 <th className="pb-2">Worker</th>
                 <th className="pb-2">Date</th>
                 <th className="pb-2">Patient Type</th>
+                <th className="pb-2">Chief Complaint</th>
                 <th className="pb-2">Result</th>
+                <th className="pb-2">Referral Required</th>
+                <th className="pb-2">Referral Urgency</th>
                 <th className="pb-2">GPS</th>
               </tr>
             </thead>
@@ -74,7 +80,12 @@ export function ReportsPage() {
                   <td className="py-2">{v.worker?.name || v.workerId}</td>
                   <td className="py-2">{new Date(v.visitTimestamp).toLocaleString()}</td>
                   <td className="py-2">{v.patientType}</td>
+                  <td className="py-2">{v.chiefComplaint}</td>
                   <td className="py-2">{v.triageResult}</td>
+                  <td className="py-2">
+                    {v.referralRequired ? 'Yes' : 'No'}
+                  </td>
+                  <td className="py-2">{v.referralUrgency}</td>
                   <td className="py-2">
                     {v.latitude}, {v.longitude}
                   </td>

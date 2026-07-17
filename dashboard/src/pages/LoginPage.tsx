@@ -5,7 +5,7 @@ import { useAuth } from "../hooks/AuthProvider";
 export function LoginPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [workerId, setWorkerId] = useState("sup001");
+  const [workerId, setWorkerId] = useState("SUP001");
   const [pin, setPin] = useState("1234");
   const [error, setError] = useState("");
 

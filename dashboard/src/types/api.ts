@@ -13,12 +13,17 @@ export interface Visit {
   id: string;
   workerId: string;
   patientType: string;
+  patientAgeMonths: number | null;
   chiefComplaint: string;
   triageResult: TriageResult;
+  adviceGiven: unknown;
   referralRequired: boolean;
+  referralUrgency: string;
   latitude: number | null;
   longitude: number | null;
   visitTimestamp: string;
+  synced: boolean;
+  syncAttempts: number;
   serverReceivedAt: string;
   worker?: {
     id: string;
